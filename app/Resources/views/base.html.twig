@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        {% block base_stylesheets %}
+            <!-- bootstrap-->
+            {% stylesheets '@bootstrap_css' filter='?uglifycss' %}
+            <link rel="stylesheet" type="text/css" media="screen" href="{{ asset_url }}" >
+            {% endstylesheets %}            
+        {% endblock %}
+        {% include "CmfCreateBundle::includecssfiles.html.twig" %}
+    </head>
+    <body>
+        {% block body %}{% endblock %}
+        
+        {{ render(controller("cmf_create.jsloader.controller:includeJSFilesAction")) }}
+        {% block javascripts %}
+            {% javascripts '@jquery' '@bootstrap_js' filter='?uglifyjs2' %}
+            <script language="javascript" type="text/javascript" src="{{ asset_url }}"></script>
+            {% endjavascripts %}
+        {% endblock %}
+    </body>
+</html>

@@ -1,0 +1,11 @@
+test:
+    resource: "@TestBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+# For Create Bundle    
+create:
+    resource: "@CmfCreateBundle/Resources/config/routing/rest.xml"

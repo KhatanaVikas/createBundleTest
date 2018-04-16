@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        {% include "CmfCreateBundle::includecssfiles.html.twig" %}
+    </head>
+    <body>
+            {% block main %}
+                <div about="/cms/content/home" typeof="schema:WebPage" xmlns:schema="http://schema.org/">
+                    Hello World!
+                    <h2>Welcome to Create Bundle Testing :</h2>
+                                        <p>Name Field</p>
+                                        <p>{{name}}</p>  
+                
+                    <h1 property="schema:headline">The Title</h1>
+                    <div property="schema:text">
+                        <h2>Welcome to the Symfony CMF Demo</h2>
+                        <p>If you see this page, it means that the...</p>
+                    </div>
+                </div>                        
+            {% endblock %}                 
+
+        {% block body %}{% endblock %}
+        {{ render(controller("cmf_create.jsloader.controller:includeJSFilesAction")) }}
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>
